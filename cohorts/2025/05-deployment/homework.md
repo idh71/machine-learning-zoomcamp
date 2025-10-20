@@ -13,6 +13,10 @@
 * Use `--version` to find out
 
 
+`pipenv --versoin`
+
+pipenv, version 2025.0.4
+
 ## Question 2
 
 * Use Pipenv to install Scikit-Learn version 1.5.2
@@ -20,6 +24,10 @@
 
 > **Note**: you should create an empty folder for homework
 and do it there. 
+
+`pipenv install scikit-learn==1.5.2`
+
+03b6158efa3faaf1feea3faa884c840ebd61b6484167c711548fce208ea09445
 
 
 ## Models
@@ -72,6 +80,8 @@ What's the probability that this client will get a subscription?
 * 0.759
 * 0.959
 
+ans: see the code in score.py.  The answer I got was 0.761, so the closest answer is 0.759.
+
 If you're getting errors when unpickling the files, check their checksum:
 
 ```bash
@@ -101,6 +111,11 @@ What's the probability that this client will get a subscription?
 * 0.535
 * 0.735
 * 0.935
+
+
+`gunicorn --bind 0.0.0.0:9696 predict:app`
+
+see the code in predict.py and predict_test.py.  The probability I got was 0.311, so closest if 0.335.
 
 
 ## Docker
@@ -139,6 +154,10 @@ So what's the size of this base image?
 * 330 MB
 
 You can get this information when running `docker images` - it'll be in the "SIZE" column.
+
+`docker images`
+
+ans: 130 MB
 
 
 ## Dockerfile
@@ -179,6 +198,15 @@ What's the probability that this client will get a subscription now?
 * 0.530
 * 0.757
 * 0.960
+
+
+# to build the docker container (after writing Dockerfile)
+` docker build -t zoomcamp-test .`
+
+# to run the newly built docker container so I can hen make requests to it
+`docker run -it --rm -p 9696:9696 zoomcamp-test`
+
+ans: I got  a probability of 0.761, so the closest is 0.757
 
 
 ## Submit the results
