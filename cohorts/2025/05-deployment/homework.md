@@ -16,6 +16,10 @@ In this homework, we're going to continue working with the lead scoring dataset.
 * What's the version of uv you installed?
 * Use `--version` to find out
 
+`pip install uv`
+`uv --version`
+ans: uv 0.9.5 (d5f39331a 2025-10-21)
+
 
 ## Initialize an empty uv project
 
@@ -28,6 +32,8 @@ and do it there.
 * Use uv to install Scikit-Learn version 1.6.1 
 * What's the first hash for Scikit-Learn you get in the lock file?
 * Include the entire string starting with sha256:, don't include quotes
+
+sha256:b4fc2525eca2c69a59260f583c56a7557c6ccdf8deafdba6e060f94c1c59738e
 
 
 ## Models
@@ -93,6 +99,10 @@ $ md5sum pipeline_v1.bin
 7d17d2e4dfbaf1e408e1a62e6e880d49 *pipeline_v1.bin
 ```
 
+see question_3.py
+`uv shell python question_3.py`
+ans: 0.533
+
 
 ## Question 4
 
@@ -118,6 +128,28 @@ What's the probability that this client will get a subscription?
 * 0.534
 * 0.734
 * 0.934
+
+`uv add fastapi`
+`uv add uvicorn`
+
+`uv run question_4.py`
+
+to test the service I both used http://0.0.0.0:9696/docs and used the 'try it out' feature to score the client, I also from the terminal used th following command
+
+```bash
+curl -X 'POST' \
+  'http://0.0.0.0:9696/predict' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "lead_source": "organic_search",
+    "number_of_courses_viewed": 4,
+    "annual_income": 80304.0
+}
+```
+
+ans: 0.534
+
 
 
 ## Docker
@@ -157,6 +189,8 @@ So what's the size of this base image?
 * 330 MB
 
 You can get this information when running `docker images` - it'll be in the "SIZE" column.
+
+ans: 121 MB
 
 
 ## Dockerfile
@@ -201,6 +235,17 @@ What's the probability that this lead will convert?
 * 0.59
 * 0.79
 * 0.99
+
+see the dockerfile. 
+to build the docker image
+`docker build --platform=linux/amd64 -t churn-service .`
+
+to run the docker container
+`docker run --platform=linux/amd64 -p 9696:9696 subscription-service`
+
+ans: 0.99
+
+
 
 
 ## Submit the results
