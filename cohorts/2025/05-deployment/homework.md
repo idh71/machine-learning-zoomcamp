@@ -17,8 +17,9 @@ In this homework, we're going to continue working with the lead scoring dataset.
 * Use `--version` to find out
 
 `pip install uv`
+
 `uv --version`
-ans: uv 0.9.5 (d5f39331a 2025-10-21)
+ans: uv 0.9.5 (d5f39331a 2025-10-21). 
 
 
 ## Initialize an empty uv project
